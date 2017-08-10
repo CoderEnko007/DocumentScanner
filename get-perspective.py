@@ -1,8 +1,8 @@
-from transform import four_point_transform
+from tools.transform import four_point_transform
+from tools import imutils
 import numpy as np
 import argparse
 import cv2
-import imutils
 
 refPts = []
 clickCounts = 0
@@ -44,7 +44,7 @@ print(type(refPts))
 pts = np.array(refPts)
 print(pts)
 if len(refPts) == 4:
-	warp = four_point_transform(orig, pts.reshape(4, 2)*ratio)
+	warp = four_point_transform(orig, pts*ratio)
 	#cv2.imshow("Original", image)
 	cv2.imshow("Warped", warp)
 	cv2.waitKey(0)
